@@ -6,6 +6,9 @@ import roles as r
 import fullmenu as m
 
 
+print("6 Waiter 7Customer  Manager  Quit")
+
+
 
 
 

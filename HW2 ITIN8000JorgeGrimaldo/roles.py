@@ -1,8 +1,8 @@
 # add roles, Waiter, Customer or Manager
 import fullmenu
+
+
 print("6 Waiter 7Customer  Manager  Quit")
-
-
 
 option = int(input(""))
 while option != 0:
