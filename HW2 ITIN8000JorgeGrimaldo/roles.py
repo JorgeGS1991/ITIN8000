@@ -1,13 +1,21 @@
 # add roles, Waiter, Customer or Manager
-import fullmenu
+import fullmenu as fm
+# Will check if its a Customer, Waiter or Manager
+# c for Customer, w for Waiter and m for manager
+def getroles(Cinput):
+    if Cinput == "c":
+        print("Please Make a Selection from the Menu")
+        fm.prtMenuList("*", "c")
+        return ""
+    elif Cinput == "w":
+        fm.prtMenuList("*", "w")
+        return ""
+    else:
+        # This is for debugging purpose
+        return ""
 
 
-print("6 Waiter 7Customer  Manager  Quit")
 
-option = int(input(""))
-while option != 0:
-    if option == 6:
-        print("This is what we have avalable", + fm.chicken, + fm.beef, + fm.vegetarian)
 
-    elif option == 7:
-        print("Hello")
+
+
