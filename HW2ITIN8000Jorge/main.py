@@ -11,8 +11,8 @@ fm.initAllLists()
 
 while run:
     print("Welcome to the UNO restaurant ")
-    Cinput = input(" Type w for Waiter, c for Customer, m for Manager ")
-    #print()
+    Cinput = input(" Choose: \n w for Waiter \n c for Customer \n m for Manager \n ").lower()
+    print()
     if Cinput == "exit":
         run = False
     else:
@@ -21,7 +21,7 @@ while run:
         print(urt)
         # fix if so it doesn't update count when W is selected.
         if Cinput == "c":
-            CustInput = input("Make your code selection, use a comma to separate your selection ")
+            CustInput = input("Make your code selection, use a comma to separate your selection \n EXP: \n E1,W1 \n ")
             orList = list(CustInput.split(","))
             nItemError = False
             # check if any aren't available
@@ -45,7 +45,11 @@ while run:
                         print("Entree " + ckitems + " is not available, make another selection")
                         nItemError = True
                 else:
-                    print("Invalid Selection ")
+                    #Return to ask for a correct code
+                                        print("")
+
+
+
             # Update each entry
             if nItemError == False:
                 for items in orList[0:]:
@@ -59,14 +63,15 @@ while run:
                     elif mnSel == "E":
                         fm.updEntreeList(items)
                     else:
+                        urt = ro.getroles(Cinput)
                         print("Invalid Selection ")
         elif Cinput == "m":
             print("---------------------------")
             print("Manager Menu")
             print("---------------------------")
-            mgrInput = input("Make a selection, C= Closed Restaurant or N= Re-Open Restaurant ")
+            mgrInput = input('Make a selection, \n C = Closed Restaurant \n or \n N = Re-Open Restaurant ')
             if mgrInput == "C":
-                print("Restaurant is Closed and Food is not avalable")
+                print("Restaurant is Closed and Food is not available")
                 fm.clrAllLists()
                 fm.prtMenuList("*", "w")
             elif mgrInput == "N":
