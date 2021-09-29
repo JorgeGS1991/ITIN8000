@@ -30,9 +30,38 @@ def initAllLists():
     lstDesserts.append(["Chocolate_moose ", r.randint(1, 3), "D3"])
     lstDesserts.append(["Cheesecake ", r.randint(1, 3), "D4"])
 
-#Restaurant is Closed
+
+rEntrees = [
+    "Chicken",
+    "Beef",
+    "Vegetarian"
+]
+rSides = [
+    "Soup",
+    "Salad"
+]
+rWine = [
+    "Merlot",
+    "Chardonnay",
+    "Pinot",
+    "Rose"
+]
+rDesserts = [
+    "Flan",
+    "Creme_Brulee",
+    "Chocolate_Moose",
+    "Cheesecake"
+]
+secure_random = r.SystemRandom()
+rEl = secure_random.choice(rEntrees)
+rSl = secure_random.choice(rSides)
+rWl = secure_random.choice(rWine)
+rDl = secure_random.choice(rDesserts)
+
+
+# Restaurant is Closed
 def rclosed():
-    lstEntrees.append(["Chicken ",0, "E1"])
+    lstEntrees.append(["Chicken ", 0, "E1"])
     lstEntrees.append(["Beef ", 0, "E2"])
     lstEntrees.append(["Vegetarian ", 0, "E3"])
     # Sides List
@@ -49,8 +78,11 @@ def rclosed():
     lstDesserts.append(["Chocolate_moose ", 0, "D3"])
     lstDesserts.append(["Cheesecake ", 0, "D4"])
 
-'''def initializeList():
-	lstEntrees = [["Chicken ", r.randint(1, 6), "E1"],
+
+"""
+#Get randome selection
+def initializeList():
+	newEntrees = [["Chicken ", r.randint(1, 6), "E1"],
              ["Beef ", r.randint(1, 6), "E2"],
              ["vegetarian ", r.randint(1, 6), "E3"]]
 	lstSides = [["soup ", r.randint(5, 10), "S1"],
@@ -65,7 +97,8 @@ def rclosed():
              ["creme_brulee ", r.randint(1, 3), "D2"],
              ["chocolate_moose ", r.randint(1, 3), "D3"],
              ["cheesecake ", r.randint(1, 3), "D4"]
-             ]'''
+             ]
+"""
 
 
 def clrAllLists():
