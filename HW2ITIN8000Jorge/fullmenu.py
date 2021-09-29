@@ -30,7 +30,24 @@ def initAllLists():
     lstDesserts.append(["Chocolate_moose ", r.randint(1, 3), "D3"])
     lstDesserts.append(["Cheesecake ", r.randint(1, 3), "D4"])
 
-
+#Restaurant is Closed
+def rclosed():
+    lstEntrees.append(["Chicken ",0, "E1"])
+    lstEntrees.append(["Beef ", 0, "E2"])
+    lstEntrees.append(["Vegetarian ", 0, "E3"])
+    # Sides List
+    lstSides.append(["Soup ", 0, "S1"])
+    lstSides.append(["Salad ", 0, "S2"])
+    # Wine List
+    lstWines.append(["Merlot ", 0, "W1"])
+    lstWines.append(["Chardonnay ", 0, "W2"])
+    lstWines.append(["Pinot ", 0, "W3"])
+    lstWines.append(["Rose ", 0, "W4"])
+    # Desserts List
+    lstDesserts.append(["Flan ", 0, "D1"])
+    lstDesserts.append(["Creme_brulee ", 0, "D2"])
+    lstDesserts.append(["Chocolate_moose ", 0, "D3"])
+    lstDesserts.append(["Cheesecake ", 0, "D4"])
 
 '''def initializeList():
 	lstEntrees = [["Chicken ", r.randint(1, 6), "E1"],
