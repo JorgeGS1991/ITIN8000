@@ -44,7 +44,7 @@ while run:
                     print("---------------------------")
                     CustInput = input(
                         "Make your code selection, use a comma to separate your selection \n EXP: \n E1,W1 \n or "
-                        " R for Ramdome Order ")
+                        " R for Random Order ")
                     orList = list(CustInput.split(","))
                     nItemError = False
                     # check if any aren't available
@@ -74,9 +74,26 @@ while run:
                                 nItemError = True
 
                         elif ckSel == "R":
-                            print("You Have selected a Random Order \n" + fm.rDl, "\n" + fm.rEl,
+                            if nItemError == False:
+                                for items in orList[0:]:
+                                    mnSel = items[0:1]
+                                    if mnSel == "W":
+                                        fm.updWineList(items)
+                                    elif mnSel == "D":
+                                        fm.updDessertList(items)
+                                    elif mnSel == "S":
+                                        fm.updSidesList(items)
+                                    elif mnSel == "E":
+                                        fm.updEntreeList(items)
+                                    else:
+                                        print("")
+                            print("You Have selected a Random Order \n "
+
+                                  "\n" + fm.rDl, "\n" + fm.rEl,
                                   "\n" + fm.rSl, "\n" + "and", fm.rWl +
-                                  "\n You can order more things from the Menu \n"
+                                  "\n \nIf You are not Happy with Your Order"
+                                  "\nYou can make a different Selection \n"
+
                                   "----------------------------------------")
 
 
@@ -87,7 +104,7 @@ while run:
                             print("---------------------------")
                             print("Invalid input!  " + ckitems + "\n")
                             err = True
-                    if err == False:
+                    if not err:
                         vop = False
 
                     # Update each entry
