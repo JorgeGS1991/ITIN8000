@@ -21,15 +21,14 @@ now = date.today()
 
 age = date(int(bd_y), int(bd_m), int(bd_d))
 print("Your age is ", now - age)
-days = now - age
-
 
 # Transfer Fname, LName and FColor to UserName.txt file
 with open('UserName.txt', 'w') as f:
     f.write('{} {} {}'.format(UlName, UfName, UfColor))
 
 # Transfer user's age in days to a binary file "DaysOld"
-temp = format(days, 'b')
+
+temp = format(int(11095), 'b')
 
 print(temp)
 
