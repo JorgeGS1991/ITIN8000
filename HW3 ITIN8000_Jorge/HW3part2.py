@@ -51,11 +51,12 @@ sorted_df.to_csv('ComicCharacters.csv', index=False)
 with open("ComicCharacters.csv", "r") as f:
     reader = csv.reader(f)
     next(reader)
-    data = {"ComicCharacters": []}
+    data = {"Ownership": []}
     for row in reader:
-        data["ComicCharacters"].append({"name": row[1], "ALIGN": row[4], "EYE": row[5], "HAIR": row[6], "SEX": row[7], "Publisher":row[13]})
-
+        data["Ownership"].append({"Publisher": row[13], "name": row[1], "ALIGN": row[4], "EYE": row[5], "HAIR": row [6], "SEX": row[7]})
+root = {}
+root["Character Name"] = data
 with open("ComicCharacters.json", "w") as f:
-    json.dump(data, f, indent=4)
+    json.dump(root, f, indent=4)
 
 
