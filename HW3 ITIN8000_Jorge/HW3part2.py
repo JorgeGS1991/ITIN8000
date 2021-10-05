@@ -8,41 +8,54 @@
 # Hair Color
 # Gender
 # When run it should generate a new file
+from _csv import writer
+from typing import Set
 
 import pandas as pd
 import json
 import csv
 import glob
 
+#*** How to know when a character is coming from DC or Marvel***
+# Get this done before combined into one document
+df_marvel = pd.read_csv("marvel-wikia-data.csv")
+df_marvel['Publisher'] = 'Marvel'
+df_marvel.to_csv('marvel-wikia-data.csv', index=False)
+
+#DC
+df_DC = pd.read_csv("dc-wikia-data.csv")
+df_DC['Publisher'] = 'DC'
+df_DC.to_csv('dc-wikia-data.csv', index=False)
+
 extension = 'csv'
+
 exname = ["dc-wikia-data.csv", "marvel-wikia-data.csv"]
 all_filenames: [exname] = [i for i in glob.glob('*.{}'.format(extension))]
+
+
+
+
 # combine all files in the fname
 combined_csv = pd.concat([pd.read_csv(f) for f in all_filenames])
-# export csv files to json
-combined_csv.to_csv( "ComicCharacters.csv", index=False, encoding='utf-8-sig')
+combined_csv.to_csv("ComicCharacters.csv", index=False, encoding='utf-8-sig')
 
 
 # Read in your .csv files as dataframes
-# df is a common standard for naming a dataframe. You can
-# name them something more descriptive as well.
-# Using a descriptive name is helpful when you are dealing
-# with multiple .csv files.
+# df is a common standard for naming a dataframe.
+
 df = pd.read_csv("ComicCharacters.csv")
-
-
 sorted_df = df.sort_values(by=["name"], ascending=True)
-
-# Index=False is a flag that tells pandas not to write
-# the index of each row to a new column. If you'd like
-# your rows to be numbered explicitly, leave this as
-# the default, True
 sorted_df.to_csv('ComicCharacters.csv', index=False)
 
-#csv to Json file
-#csv.to_json("ComicCharacters.JSON", orient='records',lines=True)
+# Transfer CSV file to json
+with open("ComicCharacters.csv", "r") as f:
+    reader = csv.reader(f)
+    next(reader)
+    data = {"ComicCharacters": []}
+    for row in reader:
+        data["ComicCharacters"].append({"name": row[1], "ALIGN": row[4], "EYE": row[5], "HAIR": row[6], "SEX": row[7], "Publisher":row[13]})
 
-df = pd.read_csv (r'ComicCharacters.csv')
-df.to_json (r'ComicCharacters.json', orient='records',lines=True)
+with open("ComicCharacters.json", "w") as f:
+    json.dump(data, f, indent=4)
 
 
