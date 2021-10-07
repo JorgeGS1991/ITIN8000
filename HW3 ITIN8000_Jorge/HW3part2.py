@@ -32,9 +32,6 @@ extension = 'csv'
 exname = ["dc-wikia-data.csv", "marvel-wikia-data.csv"]
 all_filenames: [exname] = [i for i in glob.glob('*.{}'.format(extension))]
 
-
-
-
 # combine all files in the fname
 combined_csv = pd.concat([pd.read_csv(f) for f in all_filenames])
 combined_csv.to_csv("ComicCharacters.csv", index=False, encoding='utf-8-sig')
@@ -51,12 +48,11 @@ sorted_df.to_csv('ComicCharacters.csv', index=False)
 with open("ComicCharacters.csv", "r") as f:
     reader = csv.reader(f)
     next(reader)
-    data = {"Ownership": []}
+    data = []
     for row in reader:
-        data["Ownership"].append({"Publisher": row[13], "name": row[1], "ALIGN": row[4], "EYE": row[5], "HAIR": row [6], "SEX": row[7]})
-root = {}
-root["Character Name"] = data
-with open("ComicCharacters.json", "w") as f:
-    json.dump(root, f, indent=4)
+        data.append({row[1]: { "Ownership":row[13], "Characteristics":{"ALIGN": row[4], "EYE": row[5], "HAIR": row[6], "SEX": row[7] }}})
 
+with open("ComicCharacters.json", "w") as f:
+    json.dump(data, f, indent=4)
+print("completed")
 
