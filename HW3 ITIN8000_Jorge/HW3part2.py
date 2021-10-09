@@ -8,9 +8,8 @@
 # Hair Color
 # Gender
 # When run it should generate a new file
-from _csv import writer
-from typing import Set
 
+# Import json, pandas, csv and glob
 import pandas as pd
 import json
 import csv
@@ -18,17 +17,19 @@ import glob
 
 #*** How to know when a character is coming from DC or Marvel***
 # Get this done before combined into one document
+
+# Add publisher column as Marvel
 df_marvel = pd.read_csv("marvel-wikia-data.csv")
 df_marvel['Publisher'] = 'Marvel'
 df_marvel.to_csv('marvel-wikia-data.csv', index=False)
 
-#DC
+# Add publisher column as DC
 df_DC = pd.read_csv("dc-wikia-data.csv")
 df_DC['Publisher'] = 'DC'
 df_DC.to_csv('dc-wikia-data.csv', index=False)
 
 extension = 'csv'
-
+# Combine DC and Marvel data to ComicCharacter.csv
 exname = ["dc-wikia-data.csv", "marvel-wikia-data.csv"]
 all_filenames: [exname] = [i for i in glob.glob('*.{}'.format(extension))]
 
@@ -50,8 +51,10 @@ with open("ComicCharacters.csv", "r") as f:
     next(reader)
     data = []
     for row in reader:
-        data.append({row[1]: { "Ownership":row[13], "Characteristics":{"ALIGN": row[4], "EYE": row[5], "HAIR": row[6], "SEX": row[7] }}})
+        # Select what's going to get transfer to JSON
+        data.append({row[1]: {"Ownership":row[13], "Characteristics": {"ALIGN": row[4], "EYE": row[5], "HAIR": row[6], "SEX": row[7]}}})
 
+# Transfer csv file to JSON
 with open("ComicCharacters.json", "w") as f:
     json.dump(data, f, indent=4)
 print("completed")

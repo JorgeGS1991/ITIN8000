@@ -45,7 +45,7 @@ data = {
     'Last Name': [UlName],
     'First Name': [UfName],
     'Favorite Color': [UfColor],
-    'Days Old': [dOld]
+    'Days Old': [days]
 }
 
 df = pd.DataFrame(data)
